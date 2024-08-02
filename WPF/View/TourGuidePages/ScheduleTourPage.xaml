@@ -1,0 +1,315 @@
+﻿<Page x:Class="BookingApp.WPF.View.TourGuidePages.ScheduleTourPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="ScheduleTourPage" Height="580" Width="800">
+    <Page.Resources>
+        <Style x:Key="LogoutButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="LightCoral"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="LightCoral    " BorderThickness="2" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightPink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox" x:Key="RoundedTextBoxStyle">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+    </Page.Resources>
+    <Border Margin="5" Background="#f2d5d5" CornerRadius="20 20 20 20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock  FontFamily="Trebuchet MS" Foreground="#424040" Grid.Row="0" FontWeight="Bold" Text="Schedule Tour" FontStretch="Expanded" FontSize="22" Margin="27 20 0 0"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Width="250" Height="40" VerticalAlignment="Top" TextWrapping="Wrap" Margin="10 15 10 10" Text="{Binding ErrorMessage}" Foreground="Red" FontFamily="Trebuchet MS" FontSize="14"></TextBlock>
+
+        <DataGrid  AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single"
+                  ItemsSource="{Binding AllTours, UpdateSourceTrigger=PropertyChanged}" Margin="20 70 20 20" HorizontalAlignment="Left"
+                  SelectedItem="{Binding SelectedTour, UpdateSourceTrigger=PropertyChanged}"
+                   Background="White" BorderBrush="LightGray" IsReadOnly="True"
+                  GridLinesVisibility="None" Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  FontFamily="Trebuchet MS">
+            <DataGrid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/> 
+                </Style>
+               
+               
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#e0e0e0"/> 
+                    <Setter Property="Foreground" Value="#424040"/> 
+                    <Setter Property="BorderBrush" Value="LightGray"/> 
+                    <Setter Property="BorderThickness" Value="2 0 0 0"/> 
+                    <Setter Property="Padding" Value="5"/> 
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            
+               <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#f2f2f2"/>
+                    <Setter Property="Foreground" Value="#424040"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e8e8e8"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#e8e8e8"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                   
+            </DataGrid.CellStyle>
+            
+            
+            <DataGrid.RowStyle>
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="White"/> 
+        <Setter Property="Foreground" Value="#424040"/> 
+        <Setter Property="BorderBrush" Value="LightGray"/> 
+        <Setter Property="BorderThickness" Value="0 0 2 0"/> 
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="10"> 
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </SelectiveScrollingGrid.RowDefinitions>
+                           
+                            <DataGridCellsPresenter Grid.Column="1"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            BorderBrush ="LightGray"
+                            BorderThickness = "0"/> 
+                            
+                        </SelectiveScrollingGrid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</DataGrid.RowStyle>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" My Tours" Width="8*" Binding="{Binding Path=Name }" />
+               
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Margin="20 70 20 20">
+            <Border  Margin="5" Background="white" CornerRadius="5 5 5 5">
+            <TextBlock FontFamily="Trebuchet MS" Foreground="#424040" Text="Schedule Tour" HorizontalAlignment="Center" FontSize="20">  </TextBlock>
+            </Border>
+            <Border  Margin="5" Background="LightGray" CornerRadius="5 5 5 5">
+                <TextBlock FontFamily="Trebuchet MS" Foreground="#424040" Text="  Select Date" VerticalAlignment="Center" HorizontalAlignment="Left"   FontSize="16" Padding="5">
+                    <DatePicker Width="150" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="98,0,20,0" SelectedDate="{Binding StartDate}" >
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                
+                    
+                </TextBlock>
+            </Border>
+            <Border  Margin="5" Background="LightGray" CornerRadius="5 5 5 5">
+                <TextBlock  FontFamily="Trebuchet MS" Foreground="#424040" FontSize="16" Text="Select Time (h)" Margin= "10 10 10 10">
+                    <TextBox Width="150" Style="{StaticResource RoundedTextBoxStyle}"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="65,0,20,0" Text="{Binding Hours}"></TextBox>
+
+                    
+                </TextBlock>
+                
+            </Border>
+            
+            <Button Width="100" Content="Schedule" Margin="10 20 10 10" Style="{StaticResource LogoutButtonStyle}"  Click="ScheduleTour"></Button>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2"   AutoGenerateColumns="False" CanUserAddRows="False" 
+                   ItemsSource="{Binding TourExecutions, UpdateSourceTrigger=PropertyChanged}" Margin="20 0 20 90" HorizontalAlignment="Left"
+                   Background="White" BorderBrush="LightGray"
+                   GridLinesVisibility="None" Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  FontFamily="Trebuchet MS">
+             <DataGrid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/> 
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#e0e0e0"/> 
+                    <Setter Property="Foreground" Value="#424040"/> 
+                    <Setter Property="BorderBrush" Value="LightGray"/> 
+                    <Setter Property="BorderThickness" Value="2 0 0 0"/> 
+                    <Setter Property="Padding" Value="5"/> 
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            
+               <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#f2f2f2"/>
+                    <Setter Property="Foreground" Value="#424040"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            
+            <DataGrid.RowStyle>
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="White"/> 
+        <Setter Property="Foreground" Value="#424040"/> 
+        <Setter Property="BorderBrush" Value="LightGray"/> 
+        <Setter Property="BorderThickness" Value="0 0 2 0"/> 
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="10"> 
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </SelectiveScrollingGrid.RowDefinitions>
+                           
+                            <DataGridCellsPresenter Grid.Column="1"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            BorderBrush ="LightGray"
+                            BorderThickness = "0"/> 
+                            
+                        </SelectiveScrollingGrid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header=" Id" Width="2*" Binding="{Binding Path=Id }" />-->
+                <DataGridTextColumn Header=" Date" Width="8*" Binding="{Binding Path=StartDate }" />
+                <DataGridTextColumn Header=" Status" Width="4*" Binding="{Binding Path=Status }" />
+               
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource LogoutButtonStyle}" Grid.Row = "1" Grid.Column="1" HorizontalAlignment="Right" Width="75" Height="50" VerticalAlignment="Bottom" Margin="5 5 20 25" Content="Done" Click="DoneButtonClick"></Button>
+
+        
+    </Grid>
+    </Border>
+</Page>

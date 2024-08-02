@@ -1,0 +1,82 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.FilteredGuestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="AllGuests" Background="Linen"> <!-- Promenjena boja pozadine u svetliju roze -->
+
+    <Page.Resources>
+        <!-- Stilovi -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/> <!-- Promenjena horizontalna poravnanje -->
+            <Setter Property="Margin" Value="10,20"/> <!-- Pomeranje na x-osu -->
+            <Setter Property="Foreground" Value="#4A4A4A"/> <!-- Tamno siva boja -->
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="20"/> <!-- Povećanje fonta za DataGridCell -->
+            <Setter Property="Foreground" Value="RosyBrown"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="20"/> <!-- Povećanje fonta za DataGridColumnHeader -->
+            <Setter Property="Foreground" Value="RosyBrown"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="RosyBrown"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/> <!-- Povećanje fonta za dugme -->
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/> <!-- Povećanje fonta za TextBox -->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20"> <!-- Dodat Margin kako bi razmak između ivica ekrana i elemenata bio veći -->
+        <!-- Naslov -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition> <!-- Promenjena visina -->
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Choose the guest you will rate" Grid.Row="0"/> <!-- Postavljanje u prvu vrstu -->
+
+        <!-- DataGrid za prikaz informacija o turama -->
+        <DataGrid Grid.Row="1" x:Name="GuestsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding AllGuestsDto}" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Background="WhiteSmoke" BorderBrush="DarkGray" BorderThickness="1" Margin="0,10,0,0"> <!-- Promenjena margina -->
+            <!-- Grid.ColumnSpan postavljeno na 3 kako bi DataGrid zauzeo prostor svih 3 kolona -->
+            <DataGrid.Columns>
+                <!-- Kolona za ime ture -->
+                <DataGridTextColumn Header="Guest name" Binding="{Binding Username}" Width="*" FontSize="22"/> <!-- Povećanje fonta za DataGridTextColumn -->
+                <DataGridTextColumn Header="Accommodation" Binding="{Binding AccommodationName}" Width="*" FontSize="22"/> <!-- Povećanje fonta za DataGridTextColumn -->
+                <DataGridTextColumn Header="Start date" Binding="{Binding StartDate}" Width="*" FontSize="22"/> <!-- Povećanje fonta za DataGridTextColumn -->
+                <DataGridTextColumn Header="End date" Binding="{Binding EndDate}" Width="*" FontSize="22"/> <!-- Povećanje fonta za DataGridTextColumn -->
+                <!-- Kolona sa dugmadima Details i Reserve -->
+                <DataGridTemplateColumn Header="Review" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Select" Click="ReviewButton_Click" FontSize="22"/> <!-- Povećanje fonta za dugme -->
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Padding="5" Height="80"> <!-- Promenjena vertikalna poravnanje -->
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+                    <TextBox Text="Ctrl + Q -> Log out" IsReadOnly="True" FontSize="18"/> <!-- Povećanje fonta za TextBox -->
+                    <TextBox Text="Ctrl + A -> My account" IsReadOnly="True" FontSize="18"/> <!-- Povećanje fonta za TextBox -->
+                    <TextBox Text="Ctrl + D -> Select" IsReadOnly="True" FontSize="18"/> <!-- Povećanje fonta za TextBox -->
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Page>

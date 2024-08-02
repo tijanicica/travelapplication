@@ -1,0 +1,152 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.RenovationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BookingApp.WPF.View.OwnerPages"
+      xmlns:owner="clr-namespace:BookingApp.WPF.ViewModel.Owner"
+      xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+      d:DataContext="{d:DesignInstance Type=owner:RenovationPageViewModel}"
+      mc:Ignorable="d"
+      Title="RenovationPage" >
+    <Grid>
+	    <Grid.RowDefinitions>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="20"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="Auto"/>
+		    <RowDefinition Height="Auto"/>
+	    </Grid.RowDefinitions>
+	    <Grid.ColumnDefinitions>
+		    <ColumnDefinition Width="Auto"/> <!--0 Location -->
+		    <ColumnDefinition Width="20"/> <!-- 1 razmak -->
+		    <ColumnDefinition Width="Auto"/> <!-- 2 Country -->
+		    <ColumnDefinition Width="20"/> <!-- 3 TextBox Country -->
+		    <ColumnDefinition Width="Auto"/> <!-- 2 Country -->
+		    <ColumnDefinition Width="20"/>
+		    <ColumnDefinition Width="Auto"/> <!-- 2 Country -->
+		    <ColumnDefinition Width="20"/> <!-- 2 Country -->
+		    <ColumnDefinition Width="Auto"/>
+		    <ColumnDefinition Width="20"/>
+		    <ColumnDefinition Width="Auto"/> 
+		    <ColumnDefinition Width="20"/>
+		    <ColumnDefinition Width="Auto"/> 
+	    </Grid.ColumnDefinitions>
+	
+	    <TextBlock Text="Plan Renovation"   FontSize="26" FontWeight="Bold"  VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="5 0 0 5"/>
+	    
+	    <TextBlock Grid.Row="2" Grid.Column="0" Text="Date:" FontSize="22" FontWeight="Bold"  VerticalAlignment="Center" Margin="5 5 5 5 "/>
+	    <TextBlock Grid.Row="2" Grid.Column="2" Text="From:" FontSize="22" FontWeight="Bold"  VerticalAlignment="Center" Margin="5"/>
+	    <DatePicker Grid.Row="2" Grid.Column="3" DisplayDateStart="{x:Static sys:DateTime.Today}" IsTodayHighlighted="True" SelectedDate="{Binding WantedBeginingDate, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Center" FontSize="20" Margin="5"/>
+	    <TextBlock  Grid.Row="2" Grid.Column="6" Text="To:" FontSize="22" FontWeight="Bold"  VerticalAlignment="Center" Margin="5"/>
+	    <DatePicker  Grid.Row="2" Grid.Column="8" DisplayDateStart="{x:Static sys:DateTime.Today}" IsTodayHighlighted="True" SelectedDate="{Binding WantedEndingDate, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" FontSize="20" Margin="5"/>
+	    
+	    <TextBlock Grid.Row="4" Grid.Column="0" Text="Duration:" FontSize="22" FontWeight="Bold"  VerticalAlignment="Center" Margin="5 5 5 5 "/>
+	    <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"   FontSize="20" VerticalAlignment="Center" Margin="5 5 5 5"/>
+	    
+	    <Button Grid.Row="13" Grid.Column="2" Content="Check Available"  Command="{Binding CheckAvailableCommand}" Margin="5 5 5 5" HorizontalAlignment="Left"  Style="{StaticResource EnhancedButtonStyle}" FontSize="20" VerticalAlignment="Bottom"/>
+
+	     <Grid  Grid.Column="0" Grid.Row="10">
+            <TextBlock Text="Available time frames" HorizontalAlignment="Center" FontSize="20"/>
+        </Grid>
+
+        <Grid Grid.Row="12">
+            <Border BorderBrush="Black" BorderThickness="1" Margin=" 5 5 5 5" CornerRadius="10" Height="199">
+                <ScrollViewer Margin="0 5 3 5 ">
+                    <ItemsControl Margin="5" ItemsSource="{Binding DatePairs}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="From:" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Item1}" Grid.Column="1" VerticalAlignment="Center"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="To:" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Item2}" Grid.Column="1" VerticalAlignment="Center"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Button Content="Choose" Margin="0 5 5 5" 
+                                                    Command="{Binding DataContext.SubmitCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding }"/>
+                                        </Grid>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+	        <!-- Kolona za ime smeštaja
+	    <DataGrid ItemsSource="{Binding DatePairs}" SelectedItem="{Binding SelectedDatePair}" AutoGenerateColumns="False" Grid.Row="8" Grid.ColumnSpan="5" Margin="5">
+		    <DataGrid.Columns>
+			    <DataGridTextColumn Header="Start Date" Binding="{Binding  }"/>
+			    <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}"/>
+		    </DataGrid.Columns>
+	    </DataGrid>
+	    <Button Content="Select Date Pair" Grid.RowSpan="2" Command="{Binding SelectDatePairCommand}" Grid.Row="9" Grid.Column="0"  Margin="5"/>
+
+	    <DataGrid Grid.RowSpan="3" ItemsSource="{Binding FreeDatePairs}" SelectedItem="{Binding SelectedDatePair}" AutoGenerateColumns="False" Grid.Row="8" Grid.ColumnSpan="5" Margin="5">
+		    <DataGrid.Columns>
+			    <DataGridTextColumn Header="Start Date" Width="100" Binding="{Binding StartDate}"/>
+			    <DataGridTextColumn  Width="100" Header="End Date"  Binding="{Binding EndDate}"/>
+			    <DataGridTemplateColumn Header="Select"  Width="100">
+				    <DataGridTemplateColumn.CellTemplate>
+					    <DataTemplate>
+						    <Button Content="Select" Command="{Binding DataContext.SelectDatePairCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" 
+						            CommandParameter="{Binding}" Margin="2"/>
+					    </DataTemplate>
+				    </DataGridTemplateColumn.CellTemplate>
+			    </DataGridTemplateColumn>
+		    </DataGrid.Columns>
+	    </DataGrid>
+ -->
+	    <TextBlock Grid.Row="8" Grid.Column="0" Text="Description:" FontSize="22" FontWeight="Bold" Margin="5 5 5 5 "/>
+	    <TextBox  Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="290" Height="80" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Center"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="5"/>
+
+	    <Button Grid.Row="13" Grid.Column="0" Content="Cancel" HorizontalAlignment="Left" Command="{Binding CancelCommand}" Margin="5 20 5 5"  Style="{StaticResource EnhancedButtonStyle}" FontSize="20" VerticalAlignment="Bottom"/>
+	    <Border   Grid.Column="8" Grid.Row="13"  HorizontalAlignment="Right" Background="White" BorderBrush="Black" BorderThickness="1" Padding="5" Height="90" Margin="20 0 0  0 ">
+		    <DockPanel>
+			    <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+				    <TextBox Text="Ctrl + Q -&gt; Log out" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				    <TextBox Text="Ctrl + A -&gt; My account" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				    <TextBox Text="Ctrl + C -&gt; Cancel" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				    <TextBox Text="Ctrl + F -&gt; Check" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				    <TextBox Text="ENTER -&gt; Choose" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+			    </StackPanel>
+		    </DockPanel>
+	    </Border>
+    </Grid>
+    
+</Page>

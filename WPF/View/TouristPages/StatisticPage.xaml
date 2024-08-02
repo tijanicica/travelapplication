@@ -1,0 +1,105 @@
+﻿<Page x:Class="BookingApp.WPF.View.TouristPages.StatisticPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    
+      xmlns:local="clr-namespace:BookingApp.WPF.View.TouristPages"
+      xmlns:tourist="clr-namespace:BookingApp.WPF.ViewModel.Tourist"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+     
+      d:DataContext="{d:DesignInstance Type=tourist:StatisticViewModel, IsDesignTimeCreatable=True}"
+      mc:Ignorable="d"
+      Title="StatisticPage">
+    <Grid Margin="50 40 50 40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- 0 Radio button -->
+            <RowDefinition Height="40"/> <!-- 1 Razmak -->
+            <RowDefinition Height="Auto"/> <!--2 Tekst -->
+            <RowDefinition Height="30"/> <!--3  Razmak -->
+            <RowDefinition Height="*"/> <!--4  Stat -->
+            <RowDefinition Height="40"/> <!--4  Stat -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/> 
+            <ColumnDefinition Width="20"/> 
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/> 
+            <ColumnDefinition Width="*"/> 
+        </Grid.ColumnDefinitions>
+        
+        <!-- Naslov -->
+        <TextBlock Text="Choose a year:" FontSize="26" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+        
+        <!-- combo box za goidne ili sve -->
+        <!-- ComboBox for Year Selection -->
+ 
+        <ComboBox Grid.Row="0" Grid.Column="2" Width="250" HorizontalAlignment="Left" ItemsSource="{Binding Years}"  SelectedItem="{Binding SelectedYear}"  FontSize="20" VerticalAlignment="Center" Margin="5">
+        </ComboBox>
+
+
+        <!-- PIE CHAR -->
+        <TextBlock Text="Acceptance rate:" FontSize="24" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
+        
+        <lvc:PieChart Grid.Row="4" Grid.Column="0" Visibility="{Binding PieChartVisibility}" Margin="0 5 15 5" LegendLocation="None" DataTooltip="{x:Null}" Series="{Binding PieSeries}" />
+        
+        <TextBlock Visibility="{Binding MessageVisibility}" 
+                   Text="{Binding Message}" 
+                   Grid.Row="4" Grid.Column="0" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="24" FontWeight="Bold" />
+
+        <TextBlock Text="Requests by language:" FontSize="24" FontWeight="Bold" Grid.Row="2" Grid.Column="2"/>
+        
+        <lvc:CartesianChart Grid.Row="4" Grid.Column="2" Series="{Binding LanguageSeries}"  LegendLocation="Top" >
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Language" />
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Number of Requests">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1" />
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+
+
+
+
+        
+        <TextBlock Text="Requests by locaton:" FontSize="24" FontWeight="Bold" Grid.Row="2" Grid.Column="4"/>
+        
+        <lvc:CartesianChart Grid.Row="4" Grid.Column="4" Series="{Binding LocationSeries}" LegendLocation="Top">
+            <lvc:CartesianChart.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="12"/>
+                </Style>
+            </lvc:CartesianChart.Resources>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Location" Labels="{Binding LocationLabels}"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Number of Requests">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        
+        
+        <!-- AVG -->
+        <TextBlock Text="Avg. participants (accepted):" FontSize="24" FontWeight="Bold" Grid.Row="2" Grid.Column="6"/>
+        <TextBlock Text="{Binding AverageDisplay}" Grid.Row="4" Grid.Column="6"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="55" FontWeight="Bold"/>
+        
+        
+    </Grid>
+</Page>

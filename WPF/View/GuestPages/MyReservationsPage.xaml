@@ -1,0 +1,91 @@
+<Page x:Class="BookingApp.WPF.View.GuestPages.MyReservationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:converters="clr-namespace:BookingApp.WPF.View.GuestPages.Converters"
+      xmlns:guest="clr-namespace:BookingApp.WPF.ViewModel.Guest"
+      mc:Ignorable="d"
+      Title="MyReservationsPage" 
+      d:DataContext="{d:DesignInstance Type=guest:MyReservationsViewModel}">
+
+    <Page.Resources>
+        <converters:StringToVisibilityConverter x:Key="VisibilityConverter"/>
+        <converters:PreviousReservationsToVisibilityConverter x:Key="VisibilityConverter2"></converters:PreviousReservationsToVisibilityConverter>
+    </Page.Resources>
+ 
+
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/> 
+        </Grid.RowDefinitions>
+       
+        <ComboBox Grid.Row="0" Width="Auto" Margin="0 5 0 10" HorizontalAlignment="Center" SelectedIndex="0" VerticalAlignment="Top" x:Name="ComboBox">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ElementName=ComboBox}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ComboBoxItem Content="Current reservations"/>
+            <ComboBoxItem Content="Approved reservations"/>
+            <ComboBoxItem Content="Pending reservations"/>
+            <ComboBoxItem Content="Rejected reservations"/>
+            <ComboBoxItem Content="Previous reservations"/>
+        </ComboBox>
+
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ItemsControl ItemsSource="{Binding Reservations}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" Margin="0 0 10 10" Padding="10" Width="300">
+                            <StackPanel>
+                                <TextBlock Text="Start Date:" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding StartDate}" />
+                                
+                                <TextBlock Text="End Date:" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding EndDate}" />
+
+                                <TextBlock Text="Guest Number:" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding GuestNumber}" />
+
+                                <TextBlock Text="Duration:" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Duration}" />
+
+                                <Button Content="Change Dates" 
+                                        Command="{Binding DataContext.ChangeDatesCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                        CommandParameter="{Binding}" 
+                                        Margin="0 5"
+                                        Visibility="{Binding SelectedItem.Content, ElementName=ComboBox, Converter={StaticResource VisibilityConverter}, ConverterParameter=Current reservations}"/>
+
+                                <Button Content="Remove" 
+                                        Command="{Binding DataContext.RemoveReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" 
+                                        CommandParameter="{Binding}" 
+                                        Margin="0 5"
+                                        Visibility="{Binding SelectedItem.Content, ElementName=ComboBox, Converter={StaticResource VisibilityConverter}, ConverterParameter=Current reservations}"/>
+
+                                <Button Content="Rate Accommodation" 
+                                        Command="{Binding DataContext.RateAccommodationCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" 
+                                        CommandParameter="{Binding}" 
+                                        Margin="0 5"
+                                        Visibility="{Binding SelectedItem.Content, ElementName=ComboBox, Converter={StaticResource VisibilityConverter2}, ConverterParameter=Previous reservations}"/>
+
+                                <Button Content="View Recensions" 
+                                        Command="{Binding DataContext.ViewRecensionsCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" 
+                                        CommandParameter="{Binding}" 
+                                        Margin="0 5"
+                                        Visibility="{Binding SelectedItem.Content, ElementName=ComboBox, Converter={StaticResource VisibilityConverter2}, ConverterParameter=Previous reservations}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

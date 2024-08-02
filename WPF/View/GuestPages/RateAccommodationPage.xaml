@@ -1,0 +1,88 @@
+<Page x:Class="BookingApp.WPF.View.GuestPages.RateAccommodationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:utils="clr-namespace:BookingApp.Utils"
+      xmlns:converters="clr-namespace:BookingApp.WPF.View.GuestPages.Converters"
+      xmlns:guest="clr-namespace:BookingApp.WPF.ViewModel.Guest"
+
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance Type=guest:RateAccommodationViewModel}"
+      Title="RateAccommodationPage" >
+    <Page.Resources>
+        <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanConverter" />
+        <converters:IntegerToBooleanConverter x:Key="IntegerToBooleanConverter" />
+    </Page.Resources>
+    <ScrollViewer>
+
+    <Grid>
+        <StackPanel  Margin="20">
+            <TextBlock Text="Rate the Accommodation and Owner" FontSize="20" TextWrapping="Wrap" Width = "500" HorizontalAlignment="Left" FontWeight="Bold" Margin="0 0 0 10"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Text="Cleanliness:" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                <RadioButton Content="1" GroupName="Cleanliness"  VerticalAlignment="Bottom" IsChecked="{Binding CleanlinessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=1}" Margin="10 0"/>
+                <RadioButton Content="2" GroupName="Cleanliness" VerticalAlignment="Bottom" IsChecked="{Binding CleanlinessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=2}" Margin="10 0"/>
+                <RadioButton Content="3" GroupName="Cleanliness" VerticalAlignment="Bottom" IsChecked="{Binding CleanlinessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=3}" Margin="10 0"/>
+                <RadioButton Content="4" GroupName="Cleanliness" VerticalAlignment="Bottom" IsChecked="{Binding CleanlinessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=4}" Margin="10 0"/>
+                <RadioButton Content="5" GroupName="Cleanliness" VerticalAlignment="Bottom" IsChecked="{Binding CleanlinessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=5}" Margin="10 0"/>
+            </StackPanel>
+               
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Text="Owner Correctness:" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                <RadioButton Content="1" GroupName="OwnerCorrectnessRating"  VerticalAlignment="Bottom" IsChecked="{Binding OwnerCorrectnessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=1}" Margin="10 0"/>
+                <RadioButton Content="2" GroupName="OwnerCorrectnessRating" VerticalAlignment="Bottom" IsChecked="{Binding OwnerCorrectnessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=2}" Margin="10 0"/>
+                <RadioButton Content="3" GroupName="OwnerCorrectnessRating" VerticalAlignment="Bottom" IsChecked="{Binding OwnerCorrectnessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=3}" Margin="10 0"/>
+                <RadioButton Content="4" GroupName="OwnerCorrectnessRating" VerticalAlignment="Bottom" IsChecked="{Binding OwnerCorrectnessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=4}" Margin="10 0"/>
+                <RadioButton Content="5" GroupName="OwnerCorrectnessRating" VerticalAlignment="Bottom" IsChecked="{Binding OwnerCorrectnessRating, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=5}" Margin="10 0"/>
+            </StackPanel>
+            
+            <TextBlock Text="Additional Comment:" VerticalAlignment="Center" />
+
+            <TextBox Text="{Binding AdditionalComment}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto" Height="80" Width = "350"  HorizontalAlignment = "Left" Margin="0 5"/>
+            
+            <TextBlock Text="Photos:" VerticalAlignment="Center" />
+            <ListBox ItemsSource="{Binding Photos}" VerticalAlignment="Top" HorizontalAlignment = "Left" Height="100" Width="350" Margin="0 5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" />
+                            <Button Content="Remove" Command="{Binding DataContext.RemovePhotoCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                    CommandParameter="{Binding}" Margin="5 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBox Text="{Binding NewPhoto}" VerticalAlignment="Top" HorizontalAlignment=" Left" Width="200" Margin="0 5"/>
+            <Button Content="Add Photo" Command="{Binding AddPhotoCommand}" Width = "150" HorizontalAlignment=" Left" Margin="5 0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Renovation Urgency Level:" VerticalAlignment="Center" Margin="0 10 0 0"/>
+                <RadioButton Content="1" GroupName="RenovationUrgency"  VerticalAlignment="Bottom" IsChecked="{Binding RenovationUrgencyLevel, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=1}" Margin="10 0"/>
+                <RadioButton Content="2" GroupName="RenovationUrgency" VerticalAlignment="Bottom" IsChecked="{Binding RenovationUrgencyLevel, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=2}" Margin="10 0"/>
+                <RadioButton Content="3" GroupName="RenovationUrgency" VerticalAlignment="Bottom" IsChecked="{Binding RenovationUrgencyLevel, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=3}" Margin="10 0"/>
+                <RadioButton Content="4" GroupName="RenovationUrgency" VerticalAlignment="Bottom" IsChecked="{Binding RenovationUrgencyLevel, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=4}" Margin="10 0"/>
+                <RadioButton Content="5" GroupName="RenovationUrgency" VerticalAlignment="Bottom" IsChecked="{Binding RenovationUrgencyLevel, Converter={StaticResource IntegerToBooleanConverter}, ConverterParameter=5}" Margin="10 0"/>
+            </StackPanel>
+            <TextBlock Text="Renovation Urgency Level:" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBlock Text="Level 1 - It would be nice to renovate some minor things, but everything works fine without it" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBlock Text="Level 2 - Minor complaints about the accommodation that, if addressed, would make it perfect" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBlock Text="Level 3 - There are several things that are quite bothersome and should be renovated" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBlock Text="Level 4 - There are many issues, and renovation is really necessary" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBlock Text="Level 5 - The accommodation is in very poor condition and it's not worth renting unless renovated" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 10 0 0"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="State of accommodation" VerticalAlignment="Center" Margin="0 10 10 10"/>
+                <TextBox Text="{Binding RenovationRecommendation}"  VerticalAlignment="Center" Width="200"/>
+            </StackPanel>
+
+
+            <Button Content="Submit Rating" Command="{Binding SubmitRatingCommand}" Width="150" Margin="0 5"
+                    IsEnabled="{Binding IsRated, Converter={StaticResource InvertedBooleanConverter}}" />
+
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</Page>

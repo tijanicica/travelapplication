@@ -1,0 +1,60 @@
+1|Rome,Italy|Meeting Italy|Serbian|,Jane,Austing,22,False|4|4/24/2024 12:00:00 AM|4/24/2024 12:00:00 AM|4/24/2024 10:50:05 PM|Invalid
+2|Rome, Italy|Visit the iconic Colosseum|English|,Anna,Smith,31,False|4|5/15/2024 9:30:00 AM|5/15/2024 11:30:00 AM|4/28/2024 10:30:00 AM|Invalid
+3|New York, USA|Enjoy a scenic Statue of Liberty cruise|English|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|6/10/2024 4:00:00 PM|4/28/2024 11:45:00 AM|Pending
+4|Tokyo, Japan|Learn the art of sushi-making|English|,Sarah,Miller,62,False|4|7/5/2024 11:00:00 AM|7/15/2024 1:00:00 PM|4/28/2024 1:20:00 PM|Pending
+5|Sydney, Australia|Take a guided tour of the iconic Opera House|English|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|4/28/2024 3:40:00 PM|Pending
+6|Rome, Italy|Visit the iconic Colosseum|English|,Anna,Smith,31,False|6|5/25/2025 9:30:00 AM|5/28/2025 11:30:00 AM|4/28/2024 10:30:00 AM|Accepted
+7|Rome, Italy|Visit the iconic Colosseum|Serbian|,Anna,Smith,31,False|4|5/15/2022 9:30:00 AM|5/15/2022 11:30:00 AM|4/28/2022 10:30:00 AM|Invalid
+8|Rome, Italy|Visit the iconic Colosseum|Serbian|,Anna,Smith,31,False|4|5/15/2023 9:30:00 AM|5/15/2023 11:30:00 AM|5/28/2023 10:30:00 AM|Invalid
+9|Rome, Italy|Visit the iconic Colosseum|Serbian|,Anna,Smith,31,False|4|5/15/2023 9:30:00 AM|5/15/2023 11:30:00 AM|6/28/2023 10:30:00 AM|Invalid
+10|Rome, Italy|Visit the iconic Colosseum|English|,Anna,Smith,31,False|4|5/15/2024 9:30:00 AM|5/15/2024 11:30:00 AM|4/28/2024 10:30:00 AM|Invalid
+11|New York, USA|Enjoy a scenic Statue of Liberty cruise|English|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|7/10/2025 4:00:00 PM|4/28/2023 11:45:00 AM|Pending
+12|New York, USA|Enjoy a scenic Statue of Liberty cruise|Serbian|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|6/10/2025 4:00:00 PM|7/28/2022 11:45:00 AM|Pending
+13|New York, USA|Enjoy a scenic Statue of Liberty cruise|English|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|6/10/2024 4:00:00 PM|6/28/2024 11:45:00 AM|Pending
+14|New York, USA|Enjoy a scenic Statue of Liberty cruise|Serbian|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|6/10/2023 4:00:00 PM|5/28/2023 11:45:00 AM|Pending
+15|New York, USA|Enjoy a scenic Statue of Liberty cruise|English|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|6/10/2024 4:00:00 PM|7/28/2024 11:45:00 AM|Pending
+16|Bukovac,Srb|esfdadf|Serbian|,lal,asd,22,False|4|4/24/2024 12:00:00 AM|4/24/2024 12:00:00 AM|4/24/2024 10:50:05 PM|Invalid
+17|Belgrade,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False;,Marko,Mirkovic,23,False;,Zarko,Markovic,23,False|4|8/26/2025 12:00:00 AM|8/28/2025 12:00:00 AM|5/5/2024 2:22:15 PM|Accepted
+18|Novi Sad,Serbia|good tour|Serbian|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|4|4/25/2024 12:00:00 AM|3/3/2024 12:00:00 AM|5/5/2024 2:22:15 PM|Invalid
+19|Bukovac,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|4|4/4/2026 12:00:00 AM|1/1/2030 12:00:00 AM|9/9/2023 2:22:15 PM|Pending
+20|Valjevo,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|4|4/4/2026 12:00:00 AM|1/1/2030 12:00:00 AM|9/9/2023 2:22:15 PM|Accepted
+21|Valjevo,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|6|4/4/2026 12:00:00 AM|1/1/2030 12:00:00 AM|9/9/2022 2:22:15 PM|Accepted
+22|Krusevac,Serbia|good|Spanish|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|4|4/4/2026 12:00:00 AM|1/1/2030 12:00:00 AM|9/9/2023 2:22:15 PM|Accepted
+23|Valjevo,Serbia|good tour exceelent, btilliant, muy bien, ahora estoy cansado, pero no tengo auinque|Spanish|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False|6|4/4/2026 12:00:00 AM|1/1/2030 12:00:00 AM|9/9/2024 2:22:15 PM|Accepted
+24|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2024 2:44:01 PM|Invalid
+25|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|5/9/2024 2:48:53 PM|Invalid
+26|Orlando, USA|Enjoy a scenic cruise|English|,Michael,Johnson,45,False|4|6/10/2024 2:00:00 PM|7/10/2030 4:00:00 PM|7/28/2024 11:45:00 AM|Pending
+27|Tokyo, Japan|Learn the art of sushi-making|English|,Sarah,Miller,62,False|4|7/5/2024 11:00:00 AM|7/15/2024 1:00:00 PM|4/28/2023 1:20:00 PM|Pending
+28|Tokyo, Japan|Learn the art of sushi-making|English|,Sarah,Miller,62,False|4|7/5/2024 11:00:00 AM|7/15/2024 1:00:00 PM|5/28/2022 1:20:00 PM|Pending
+29|Tokyo, Japan|Learn the art of sushi-making|English|,Sarah,Miller,62,False|4|7/5/2024 11:00:00 AM|7/15/2024 1:00:00 PM|8/28/2023 1:20:00 PM|Pending
+30|Sydney, Australia|Take a guided tour of the iconic Opera House|English|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|4/28/2023 3:40:00 PM|Pending
+31|Sydney, Australia|Take a guided tour of the iconic Opera House|Serbian|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|8/28/2023 3:40:00 PM|Pending
+32|Sydney, Australia|Take a guided tour of the iconic Opera House|English|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|4/28/2022 3:40:00 PM|Pending
+33|Sydney, Australia|Take a guided tour of the iconic Opera House|Serbian|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|8/28/2022 3:40:00 PM|Pending
+34|Sydney, Australia|Take a guided tour of the iconic Opera House|English|,David,Brown,32,False|4|8/20/2024 10:30:00 AM|8/26/2024 12:30:00 PM|5/28/2024 3:40:00 PM|Pending
+35|Belgrade,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False;,Marko,Mirkovic,23,False;,Zarko,Markovic,23,False|4|8/26/2025 12:00:00 AM|8/28/2025 12:00:00 AM|5/5/2024 2:22:15 PM|Accepted
+36|Belgrade,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False;,Marko,Mirkovic,23,False;,Zarko,Markovic,23,False|4|8/26/2025 12:00:00 AM|8/28/2025 12:00:00 AM|7/5/2023 2:22:15 PM|Accepted
+37|Belgrade,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False;,Marko,Mirkovic,23,False;,Zarko,Markovic,23,False|4|8/26/2025 12:00:00 AM|8/28/2025 12:00:00 AM|8/5/2022 2:22:15 PM|Accepted
+38|Belgrade,Serbia|good tour|English|,Nikola,Stojicic,22,False;,Marko,Markovic,23,False;,Marko,Mirkovic,23,False;,Zarko,Markovic,23,False|4|8/26/2025 12:00:00 AM|8/28/2025 12:00:00 AM|5/5/2022 2:22:15 PM|Accepted
+39|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2024 2:44:01 PM|Pending
+40|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|6/9/2024 2:44:01 PM|Pending
+41|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2023 2:44:01 PM|Invalid
+42|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|7/9/2023 2:44:01 PM|Invalid
+43|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|7/9/2022 2:44:01 PM|Invalid
+44|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|11/9/2022 2:44:01 PM|Invalid
+45|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|5/9/2024 2:48:53 PM|Invalid
+46|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|Serbian|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|6/9/2023 2:48:53 PM|Invalid
+47|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|10/9/2023 2:48:53 PM|Invalid
+48|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|5/9/2023 2:48:53 PM|Invalid
+49|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|Serbian|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|6/9/2022 2:48:53 PM|Invalid
+50|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|12/9/2022 2:48:53 PM|Invalid
+51|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|11/9/2022 2:48:53 PM|Invalid
+52|Dortmund,Germany|Visit the home of Borusia Dortmund football team.|English|,Lany,Lancy,65,False|4|5/11/2024 12:00:00 AM|5/23/2024 12:00:00 AM|12/9/2022 2:48:53 PM|Invalid
+53|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2024 2:44:01 PM|Invalid
+54|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|6/9/2024 2:44:01 PM|Invalid
+55|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Serbian|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|7/9/2024 2:44:01 PM|Invalid
+56|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2023 2:44:01 PM|Invalid
+57|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|6/9/2023 2:44:01 PM|Invalid
+58|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Serbian|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|10/9/2022 2:44:01 PM|Invalid
+59|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|8/9/2022 2:44:01 PM|Invalid
+60|Amsterdam,Netherlands|Beautiful tour with many sightseeings.|Spanish|,Moly,Nancy,35,False|4|5/11/2024 12:00:00 AM|5/20/2024 12:00:00 AM|5/9/2022 2:44:01 PM|Invalid

@@ -1,0 +1,122 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.OwnerNotification"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BookingApp.WPF.View.OwnerPages"
+      xmlns:owner="clr-namespace:BookingApp.WPF.ViewModel.Owner"
+      d:DataContext="{d:DesignInstance Type=owner:OwnerNotificationPageViewModel}"
+      mc:Ignorable="d"
+      Title="OwnerNotification" Height="450" Width="800">
+    <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Notifications" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 30 0"/>
+            <Button Command="{Binding BackCommand}" Background="White" BorderBrush="White">
+                <TextBlock Text="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="30" VerticalAlignment="Center" Grid.Column="0"/>
+            </Button>
+        </Grid>
+        <TextBlock Text="Rate guests:" Grid.Row="1" FontSize="20" Margin="5 0 0 0"/>
+        <Grid Grid.Row="2">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="5" CornerRadius="10">
+                <ScrollViewer Margin="0 3 3 3">
+                    <ItemsControl Margin="5" ItemsSource="{Binding notificationsAboutRatingGuests}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Guest to be rated:" FontSize="15" Grid.Row="0" Margin="5 0 0 0" TextWrapping="Wrap"/>
+                                            <TextBlock Text="Accommodation:" FontSize="15" Grid.Row="1" Margin="5 0 0 0" TextWrapping="Wrap"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <!--  <TextBlock Text="{Binding guestName}" Grid.Row="0" FontSize="15"/>
+                                            <TextBlock Text="{Binding reservedAccommodation.Name}" Grid.Row="1" FontSize="15"/>--> 
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Button Content="&#xE8D5;" FontFamily="Segoe MDL2 Assets" Margin="5 5 5 5" Command="{Binding DataContext.RateAGuestCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <TextBlock Text="New forums:" Grid.Row="3" FontSize="20" Margin="5 0 0 0"/>
+        <Grid Grid.Row="4">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="5" CornerRadius="10">
+                <ScrollViewer Margin="0 3 3 3">
+                    <ItemsControl Margin="5" ItemsSource="{Binding notificationsAboutNewForums}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="City" Grid.Row="0" Margin="5 0 0 0"/>
+                                            <TextBlock Text="{Binding Location.City}" Grid.Row="1" Margin="5 0 0 0"/>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Country" Grid.Row="0"/>
+                                            <TextBlock Text="{Binding Location.Country}" Grid.Row="1"/>
+                                        </Grid>
+
+                                        <Button Content="Show" Grid.Column="2" Margin="5" Command="{Binding DataContext.OpenForumCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

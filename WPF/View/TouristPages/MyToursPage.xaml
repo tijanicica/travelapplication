@@ -1,0 +1,171 @@
+﻿<Page x:Class="BookingApp.WPF.View.TouristPages.MyToursPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:touristPages="clr-namespace:BookingApp.WPF.View.TouristPages"
+      xmlns:tourist="clr-namespace:BookingApp.WPF.ViewModel.Tourist"
+
+      d:DataContext="{d:DesignInstance Type=tourist:MyToursViewModel}"
+
+      mc:Ignorable="d"
+      Title="MyToursPage">
+    <Page.Resources>
+        <touristPages:IsAcceptedToButtonTextConverter x:Key="IsAcceptedToButtonTextConverter"/>
+        <touristPages:IsAcceptedToButtonEnabledConverter x:Key="IsAcceptedToButtonEnabledConverter"/>
+        <touristPages:BooleanToYesNoConverter x:Key="BooleanToYesNoConverter"/>
+
+        <Style x:Key="DataGridTextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FF000000"/> <!-- Crna pozadina -->
+            <Setter Property="Foreground" Value="#FFFFFFFF"/> 
+        </Style>
+        
+        <Style x:Key="CenteredHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FF000000"/>
+            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        </Style>
+
+        
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Stil za DataGridRow koji sprečava promenu boje pozadine pri selekciji -->
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="30   ">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- For headers -->
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/> <!-- For DataGrids -->
+        </Grid.RowDefinitions>
+        
+        <!-- Overlay Grid for Success Message -->
+        <Grid Grid.Row="2" Grid.Column="2" x:Name="OverlayGridSubmit" Visibility="{Binding RatingSubmissionSuccessVisibility}" Background="White" Opacity="0.95"
+              VerticalAlignment="Bottom" HorizontalAlignment="Right"
+              Width="330" Height="150"  ZIndex="100">
+            <Border Background="Transparent" Padding="20" CornerRadius="10">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Background="White" Padding="30" CornerRadius="8" BorderBrush="Black" BorderThickness="3">
+                        <StackPanel>
+                            <TextBlock Text="Successful tour rating!" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,20" FontSize="20"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        
+        <!-- Left side: Finished tours title -->
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Finished tours" FontSize="26" FontWeight="Bold" Margin="10"/>
+        
+        <TextBlock x:Name="RatingMessageTextBlock" Grid.Column="0" Grid.Row="1" 
+                   Text="{Binding RatingMessage}" FontSize="16" FontWeight="Bold" 
+                   Foreground="Red" Margin="10" 
+                   Visibility="{Binding RatingMessageVisibility}"/>
+
+
+        <!-- Right side: Track tour title and details -->
+        <TextBlock x:Name="NoActiveToursTextBlock" Visibility="{Binding NoActiveToursVisibility}" Grid.Column="2" Grid.Row="0" Text="Currently no active tours" FontSize="26" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid x:Name="ActiveTourDetailsGrid" Visibility="{Binding ActiveTourDetailsVisibility}" Grid.Column="2" Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- Red za naslov -->
+                <RowDefinition Height="Auto"/> <!-- Prvi red za sadržaj -->
+                <RowDefinition Height="Auto"/> <!-- Drugi red za sadržaj -->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/> <!-- Prva kolona -->
+                <ColumnDefinition Width="Auto"/> <!-- Druga kolona, za vrednosti pored naslova -->
+                <ColumnDefinition Width="Auto"/> <!-- Treća kolona, za drugi set naslova -->
+                <ColumnDefinition Width="*"/> <!-- Četvrta kolona, za vrednosti pored drugog seta naslova -->
+            </Grid.ColumnDefinitions>
+            
+            
+    
+            <!-- Naslov -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0 0 0 20" Text="Track tour live" FontSize="26" FontWeight="Bold"/>
+
+            <!-- Tour name -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tour name: " FontSize="20" FontWeight="Bold" Margin="0,5"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CurrentTourName}"  FontSize="20" Margin="5,5"/>
+
+            <!-- Active keypoint -->
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Active keypoint: " FontSize="20" FontWeight="Bold" Margin="25,5,0,5"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding ActiveKeypoint}" FontSize="20"  Margin="5,5"/>
+
+            <!-- Tourist name -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Tourist name: " FontSize="20" FontWeight="Bold" Margin="0,5"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TouristName}" FontSize="20"  Margin="5,5"/>
+
+            <!-- Arrived -->
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Arrived: " FontSize="20" FontWeight="Bold" Margin="25,5,0,5"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Arrived}" FontSize="20"  Margin="5,5"/>
+        </Grid>
+
+        
+        <!-- Left side: Finished tours DataGrid -->
+        <DataGrid  Grid.Column="0" Grid.Row="2" AutoGenerateColumns="False"  Margin="10" GridLinesVisibility="Horizontal" ItemsSource="{Binding AllFinishedTours}"
+                  CanUserAddRows="False" CanUserDeleteRows="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="True" CanUserReorderColumns="False" 
+                  CanUserResizeColumns="False" RowHeaderWidth="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tour name" Binding="{Binding Name}" FontSize="20" FontWeight="Bold" Width="*" ElementStyle="{StaticResource DataGridTextStyle}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding StartDate}" FontSize="20" FontWeight="Bold" Width="*" ElementStyle="{StaticResource DataGridTextStyle}"/>
+                <DataGridTemplateColumn Header="Rate" Width="0.7*" 
+                                        HeaderStyle="{StaticResource CenteredHeaderStyle}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Rate" Style="{StaticResource EnhancedButtonStyle}" 
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.RateCommand}" CommandParameter="{Binding Id}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+      
+    
+
+        <!-- Right side: Track tour DataGrid -->
+        <DataGrid x:Name="PeopleOnTourDataGrid" Visibility="{Binding PeopleOnTourVisibility}" Grid.Column="2" Grid.Row="2" AutoGenerateColumns="False" Margin="10"  GridLinesVisibility="Horizontal" ItemsSource="{Binding AllPeopleOnTour}"
+                  RowHeaderWidth="0"   CanUserAddRows="False" CanUserDeleteRows="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="True" CanUserReorderColumns="False" 
+                  CanUserResizeColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" FontSize="20" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surename}" Width="*" FontSize="20" FontWeight="Bold"/> <!-- Dodata kolona Surname -->
+                <DataGridTextColumn Header="Arrived" Binding="{Binding Arrived, Converter={StaticResource BooleanToYesNoConverter}}" Width="*" FontSize="20" FontWeight="Bold" />
+            </DataGrid.Columns>
+        </DataGrid>
+       
+    </Grid>
+    
+</Page>

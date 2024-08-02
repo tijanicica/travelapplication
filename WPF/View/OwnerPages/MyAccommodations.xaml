@@ -1,0 +1,166 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.MyAccommodations"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BookingApp.WPF.View.OwnerPages"
+      xmlns:owner="clr-namespace:BookingApp.WPF.ViewModel.Owner"
+      d:DataContext="{d:DesignInstance Type=owner:MyAccommodationPageViewModel}"
+      mc:Ignorable="d"
+      Title="MyAccommodations" Background="LightGray">
+    <Page.Resources>
+        <!-- Stil za TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Foreground" Value="#4A4A4A"/> <!-- Tamno siva boja -->
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Stil za dugmad -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="RosyBrown"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+
+        <!-- Stil za DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="True"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="500"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+
+        <!-- Stil za DataGridColumnHeader -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="RosyBrown"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Stil za DataGridCell -->
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Style.Triggers>
+                <!-- Hover efekat -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFE7D3DC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Stil za DataGridRow -->
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <!-- Hover efekat -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFE7D3DC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Tekst za naslov -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="My Accommodations:" 
+                   FontSize="26" 
+                   FontWeight="Bold" 
+                   Margin="10" 
+                   VerticalAlignment="Top"
+                   Foreground="#883C57"/> <!-- Nežna roze boja za tekst -->
+
+        <!-- DataGrid za prikaz smeštaja -->
+        <DataGrid Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" 
+                  ItemsSource="{Binding MyAccommodation}" Margin="10">
+            <DataGrid.Columns>
+                <!-- Kolona za ime smeštaja -->
+                <DataGridTemplateColumn Header="Name" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Kolona za lokaciju smeštaja -->
+                <DataGridTemplateColumn Header="Location" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Location}" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <!-- Kolona za tip smeštaja -->
+                <DataGridTemplateColumn Header="Type" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Type}" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <!-- Kolona za dugme "View Statistics" -->
+                <DataGridTemplateColumn Header="Statistics" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.StatisticsCommand}" CommandParameter="{Binding Id}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <!-- Kolona za dugme "Plan Renovation" -->
+                <DataGridTemplateColumn Header="Renovation" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Plan" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.RenovationCommand}" CommandParameter="{Binding Id}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Border za prečice -->
+        <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 10" BorderBrush="Black" BorderThickness="1" Padding="5" Height="80">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+                    <TextBox Text="Ctrl + Q -> Log out" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + A -> My account" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + V -> View" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + P -> Plan" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Page>

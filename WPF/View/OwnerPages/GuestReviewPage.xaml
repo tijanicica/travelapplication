@@ -1,0 +1,91 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.GuestReviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="GuestReviewPage" Background="Linen"> <!-- Svetlija nijansa roze boje pozadine -->
+
+    <Page.Resources>
+        <!-- Stil za TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#4A4A4A"/> <!-- Tamno siva boja -->
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Stil za dugmad -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="RosyBrown"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="50"/>
+        </Style>
+        
+        <!-- Stil za RadioButton -->
+        <Style TargetType="RadioButton">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Margin" Value="15"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Cleanliness:" Margin="10" FontSize="22" FontWeight="Bold" Foreground="#883C57"/> <!-- Nežnija roze boja i veći i podebljan font za naslov -->
+
+        <UniformGrid Grid.Row="1" Name="cleanlinessRatingUniformGrid" Columns="5" Margin="10">
+            <RadioButton Name="cleanlinessRating1" Content="1"/>
+            <RadioButton Name="cleanlinessRating2" Content="2"/>
+            <RadioButton Name="cleanlinessRating3" Content="3"/>
+            <RadioButton Name="cleanlinessRating4" Content="4"/>
+            <RadioButton Name="cleanlinessRating5" Content="5"/>
+        </UniformGrid>
+
+        <TextBlock Grid.Row="2" Text="Rule Following:" Margin="10" FontSize="22" FontWeight="Bold" Foreground="#883C57"/> <!-- Nežnija roze boja i veći i podebljan font za naslov -->
+
+        <UniformGrid Grid.Row="3" Name="ruleFollowingRatingUniformGrid" Columns="5" Margin="10">
+            <RadioButton Name="ruleFollowingRating1" Content="1"/>
+            <RadioButton Name="ruleFollowingRating2" Content="2"/>
+            <RadioButton Name="ruleFollowingRating3" Content="3"/>
+            <RadioButton Name="ruleFollowingRating4" Content="4"/>
+            <RadioButton Name="ruleFollowingRating5" Content="5"/>
+        </UniformGrid>
+
+        <TextBlock Grid.Row="4" Text="Comment:" Margin="10" FontSize="22" FontWeight="Bold" Foreground="#883C57"/> <!-- Nežnija roze boja i veći i podebljan font za naslov -->
+
+        <TextBox Grid.Row="5" Name="commentTextBox" Margin="10" FontSize="18" Height="200"/> <!-- Smanjena visina za unos komentara i povećana veličina fonta -->
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <Button Content="Cancel" Click="CancelButton_Click" Margin="10" FontSize="18" Background="RosyBrown"/> <!-- Promena boje i veličine fonta za dugmad -->
+            <Button Content="Submit" Click="SubmitButton_Click" Margin="10" FontSize="18" Background="RosyBrown"/> <!-- Promena boje i veličine fonta za dugmad -->
+        </StackPanel>
+        
+        <Border Grid.Row="7" HorizontalAlignment="Right" Margin="10,0" BorderBrush="Black" BorderThickness="1" Padding="10" Height="99">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+                    <TextBox Text="Ctrl + Q -&gt; Log out" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + A -&gt; My account" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + S -&gt; Submit" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="Ctrl + C -&gt; Cancel" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Text="SPACE -&gt; To choose number" IsReadOnly="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,129 @@
+<Window x:Class="BookingApp.WPF.View.GuestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:BookingApp.WPF.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:fa="http://schemas.fontawesome.com/icons/"
+        mc:Ignorable="d"
+        Title="GuestWindow" Height="750" Width="430" Background="#6A5ACD">
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="*" /> 
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="WanderY" TextAlignment="Center" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Lato" Grid.Row="0" Background="#6A5ACD"/>
+
+        <Grid Grid.Row="1" Width="415" Margin="0,0,10, 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ToggleButton x:Name="ToggleMenuButton" Click="ToggleMenuButton_Click" Width="30" Height="30" Background="#AE82FF" Margin="5,0,0,0" BorderBrush="Black" BorderThickness="1">
+                <Image Source="/Resources/Images/icons8-menu-192.png" MaxWidth="20" HorizontalAlignment="Left" Margin="5"/>
+                <ToggleButton.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </ToggleButton.Resources>
+            </ToggleButton>
+
+
+
+            <TextBlock Grid.Column="1" x:Name="ActionBarName" FontSize="18" FontWeight="Bold" Margin="5 0 0 0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <materialDesign:PackIcon Grid.Column="2" Kind="ArrowDownDropCircle" Margin="5" Foreground="White" 
+                                     Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+
+        </Grid>
+
+        <Frame Background="White" Grid.Row="2" Margin="0" x:Name="MainFrameGuestWindow" NavigationUIVisibility="Hidden" />
+
+        <Grid Grid.Row="1" x:Name="ActionBar" RowSpan="2" Width="200" HorizontalAlignment="Left" Margin="0" Visibility="Collapsed" Panel.ZIndex="1">
+            <UniformGrid Columns="1" Margin="0" Background="#6A5ACD">
+                <Button x:Name="CloseActionBarButton" Click="CloseActionBarButton_Click" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3" Visibility="Visible" Background="#AE82FF" BorderBrush="Black" BorderThickness="1">
+                    <Image Source="/Resources/Images/icons8-menu-192.png" MaxWidth="20" HorizontalAlignment="Left" Margin="5"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_Home"/>
+                    <Button x:Name="HomePageButton" Content="Home Page" Click="HomePage_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_Search"/>
+                    <Button Content="Search" Click="Search_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_Globe"/>
+                    <Button Content="Whenever/wherever" Click="WW_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_Users"/>
+                    <Button Content="Forums" Click="Forums_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_User"/>
+                    <Button Content="My profile" Click="MyProfile_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_Bell"/>
+                    <Button Content="Notifications" Click="Notifications_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,0">
+                    <fa:SvgAwesome Width="20" Height="20" Margin="0,0,5,0" Icon="Solid_CalendarAlt"/>
+                    <Button Content="My reservations" Click="MyReservations_Click" Background="#AE82FF" FontWeight="Bold" Height="30" Width="120" FontSize="11" BorderBrush="Black" BorderThickness="1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </UniformGrid>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,495 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\add.png" />
+    <None Remove="Resources\Images\delete.png" />
+    <None Remove="Resources\Images\edit.png" />
+    <None Remove="Resources\Images\view.png" />
+    <None Remove="View\GuestWindow" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\edit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\view.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\country_icon.png" />
+    <None Remove="Resources\Images\duration_icon.png" />
+    <Content Include="Resources\Images\duration_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\city_icon.png" />
+    <Content Include="Resources\Images\city_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\people_icon.jpg" />
+    <None Remove="Resources\Images\people_icon.png" />
+    <Content Include="Resources\Images\people_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\language_icon.png" />
+    <Content Include="Resources\Images\language_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\country_icon2.png" />
+    <Content Include="Resources\Images\country_icon2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\icons8-tour-guide-64.png" />
+    <Content Include="Resources\Images\icons8-tour-guide-64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\beach-near-hotel-min.jpg" />
+    <Content Include="Resources\Images\beach-near-hotel-min.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\guide.jpg" />
+    <Content Include="Resources\Images\guide.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\hiking.jpg" />
+    <Content Include="Resources\Images\hiking.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\holiday.jpg" />
+    <Content Include="Resources\Images\holiday.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\how_to_take_great_travel_photos.jpg" />
+    <Content Include="Resources\Images\how_to_take_great_travel_photos.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\Image-1-Taman-Negara-1.jpg" />
+    <Content Include="Resources\Images\Image-1-Taman-Negara-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\italy.jpg" />
+    <Content Include="Resources\Images\italy.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\menu-burger.png" />
+    <Content Include="Resources\Images\menu-burger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\polarlights.jpg" />
+    <Content Include="Resources\Images\polarlights.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\prettytravel.jpg" />
+    <Content Include="Resources\Images\prettytravel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\Sightseeing-in-Mauritius-02.jpg" />
+    <Content Include="Resources\Images\Sightseeing-in-Mauritius-02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\sightseeing-m.jpg" />
+    <Content Include="Resources\Images\sightseeing-m.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\tourists.jpg" />
+    <Content Include="Resources\Images\tourists.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\where-to-go-on-holiday.jpg" />
+    <Content Include="Resources\Images\where-to-go-on-holiday.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\left-arrow.png" />
+    <Content Include="Resources\Images\left-arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\right-arrow-angle.png" />
+    <Content Include="Resources\Images\right-arrow-angle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\plus.png" />
+    <Content Include="Resources\Images\plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\route.png" />
+    <Content Include="Resources\Images\route.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\request-for-proposal.png" />
+    <Content Include="Resources\Images\request-for-proposal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\check.png" />
+    <Content Include="Resources\Images\check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\user.png" />
+    <Content Include="Resources\Images\user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\route (1).png" />
+    <Content Include="Resources\Images\route (1).png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\check-symbol.png" />
+    <Content Include="Resources\Images\check-symbol.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\add-image.png" />
+    <Content Include="Resources\Images\add-image.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\mark.png" />
+    <Content Include="Resources\Images\mark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\upload.png" />
+    <Content Include="Resources\Images\upload.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\chevron.png" />
+    <Content Include="Resources\Images\chevron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\arrow-right.png" />
+    <Content Include="Resources\Images\arrow-right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\voucher.png" />
+    <Content Include="Resources\Images\voucher.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\up-loading.png" />
+    <Content Include="Resources\Images\up-loading.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\upload (2).png" />
+    <Content Include="Resources\Images\upload (2).png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\@4x.png" />
+    <Content Include="Resources\Images\@4x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\flag-7@2x.png" />
+    <Content Include="Resources\Images\flag-7@2x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\calendar-days@2x.png" />
+    <Content Include="Resources\Images\calendar-days@2x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\calendar-days@3x.png" />
+    <Content Include="Resources\Images\calendar-days@3x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\@3x.png" />
+    <Content Include="Resources\Images\@3x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\check@3x.png" />
+    <Content Include="Resources\Images\check@3x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\flag-7@3x.png" />
+    <Content Include="Resources\Images\flag-7@3x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\chevron-right-white1@1.5x.png" />
+    <Content Include="Resources\Images\chevron-right-white1@1.5x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\chevron-white-new-right@1.5x.png" />
+    <Content Include="Resources\Images\chevron-white-new-right@1.5x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\chevron-left@1.5x.png" />
+    <Content Include="Resources\Images\chevron-left@1.5x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\pdf-file-format.png" />
+    <Content Include="Resources\Images\pdf-file-format.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\file.png" />
+    <Content Include="Resources\Images\file.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\route (3).png" />
+    <Content Include="Resources\Images\route (3).png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\rating-stars.png" />
+    <Content Include="Resources\Images\rating-stars.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\event.png" />
+    <Content Include="Resources\Images\event.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\statistics3-removebg-preview.png" />
+    <Content Include="Resources\Images\statistics3-removebg-preview.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\tourguidephoto.jpg" />
+    <Content Include="Resources\Images\tourguidephoto.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\icons8-menu-192.png" />
+    <Content Include="Resources\Images\icons8-menu-192.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\Images\icons8-user-96.png" />
+    <Content Include="Resources\Images\icons8-user-96.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="View\GuestPages\GuestWindow.xaml" />
+    <Page Update="WPF\View\GuestPages\ChangeReservationDatesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\DetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\FilteredAccommodationsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\GetAllPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\MyReservationsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\RateAccommodationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\ReservationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestPages\SearchForAccommodationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\AccommodationReviews.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\CreateAccommodationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\FilteredGuestsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\GuestReviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\MyAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\OneAccommodationReviewPagee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerPages\ReservationOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\AddTourSpotsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\CancelTourPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\CreateTourPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\OneReviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\ScheduleTourPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\StatisticsMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\TouristStatisticsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\TourReviewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\TourStatisticsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\TrackOneTourPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuidePages\TrackToursPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\AlternativesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\MyReservationsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\MyToursPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\MyVouchers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\NotificationsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\RateTourPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\ReservePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristPages\TourDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\CommentForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\CommentsOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\GuestWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\OwnerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\SignInForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TourGuideWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="WPF\View\TouristWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\belgrade.png" />
+    <None Remove="Resources\Images\vienna.jpg" />
+    <Resource Include="Resources\Images\vienna.jpg" />
+    <None Remove="Resources\Images\belgrade.jpg" />
+    <Resource Include="Resources\Images\belgrade.jpg" />
+    <None Remove="Resources\Images\novi_sad.jpg" />
+    <Resource Include="Resources\Images\novi_sad.jpg" />
+    <None Remove="Resources\Images\barcelona.jpg" />
+    <Resource Include="Resources\Images\barcelona.jpg" />
+    <None Remove="Resources\Images\nevesinje.jpg" />
+    <Resource Include="Resources\Images\nevesinje.jpg" />
+    <None Remove="Resources\Images\logo_tourist.jpg" />
+    <None Remove="Resources\Images\home_page_tourist.png" />
+    <Resource Include="Resources\Images\home_page_tourist.png" />
+    <None Remove="Resources\Images\icons8-tourist-50.png" />
+    <Resource Include="Resources\Images\icons8-tourist-50.png" />
+
+    <None Remove="Resources\Images\dragon-icon-35553.png" />
+    <Resource Include="Resources\Images\dragon-icon-35553.png" />
+    <None Remove="Resources\Images\coconut-tree-icon.png" />
+    <Resource Include="Resources\Images\coconut-tree-icon.png" />
+    <None Remove="Resources\Images\computer-icons-number-number-1-icon.jpg" />
+    <None Remove="Resources\Images\pngtree-black-colorful-number-1-png-image_2786493.jpg" />
+    <None Remove="Resources\Images\3522837.png" />
+    <Resource Include="Resources\Images\3522837.png" />
+    <None Remove="Resources\Images\3522860.png" />
+    <Resource Include="Resources\Images\3522860.png" />
+    <None Remove="Resources\Images\three.png" />
+    <Resource Include="Resources\Images\three.png" />
+    <None Remove="Resources\Images\9080225.png" />
+    <None Remove="Resources\Images\13110584.png" />
+    <Resource Include="Resources\Images\13110584.png" />
+    <None Remove="Resources\Images\3522927.png" />
+    <Resource Include="Resources\Images\3522927.png" />
+    <None Remove="Resources\Images\13985286.png" />
+    <Resource Include="Resources\Images\13985286.png" />
+    <None Remove="Resources\Images\9080229.png" />
+    <Resource Include="Resources\Images\9080229.png" />
+    <None Remove="Resources\Images\3524348.png" />
+    <Resource Include="Resources\Images\3524348.png" />
+    <None Remove="Resources\Images\9080233.png" />
+    <Resource Include="Resources\Images\9080233.png" />
+    <None Remove="Resources\Images\3524367.png" />
+    <Resource Include="Resources\Images\3524367.png" />
+    <None Remove="Resources\Images\471664.png" />
+    <None Remove="Resources\Images\25333.png" />
+    <Resource Include="Resources\Images\25333.png" />
+    <None Remove="Resources\Images\png-clipart-computer-icons-veiled-woman-contemplate-miscellaneous-photography.png" />
+    <Resource Include="Resources\Images\png-clipart-computer-icons-veiled-woman-contemplate-miscellaneous-photography.png" />
+    <None Remove="Resources\Images\949706.png" />
+    <Resource Include="Resources\Images\949706.png" />
+    <None Remove="Resources\Images\Choose-Warm-Earthy-Colours.webp" />
+    <None Remove="Resources\Images\SL-1873_FCP-8cf5801247c34df0b8bd839eeea78d4d.jpg" />
+    <Resource Include="Resources\Images\SL-1873_FCP-8cf5801247c34df0b8bd839eeea78d4d.jpg" />
+    <None Remove="Resources\Images\Best-Cottages-For-Sale-In-The-World-5.png" />
+    <Resource Include="Resources\Images\Best-Cottages-For-Sale-In-The-World-5.png" />
+
+    <None Remove="Resources\Images\Barcelona2.jpg" />
+    <Resource Include="Resources\Images\Barcelona2.jpg" />
+    <None Remove="Resources\Images\left.png" />
+    <None Remove="Resources\Images\right.png" />
+    <None Remove="Resources\Images\right_icon.png" />
+    <Resource Include="Resources\Images\right_icon.png" />
+    <None Remove="Resources\Images\left_icon.png" />
+    <Resource Include="Resources\Images\left_icon.png" />
+    <None Remove="Resources\Images\5557402.png" />
+    <Resource Include="Resources\Images\5557402.png" />
+    <None Remove="Resources\Images\noprofilepicture.jpg" />
+    <Resource Include="Resources\Images\noprofilepicture.jpg" />
+    <None Remove="Resources\Images\logo_tour_report.png" />
+    <Resource Include="Resources\Images\logo_tour_report.png" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
+    <PackageReference Include="FontAwesome5" Version="2.1.11" />
+    <PackageReference Include="itext7" Version="8.0.4" />
+    <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
+    <PackageReference Include="itext7.pdfhtml" Version="5.0.4" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.1-ci619" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
+</Project>

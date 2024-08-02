@@ -1,0 +1,182 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.SelectedForum"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BookingApp.WPF.View.OwnerPages"
+      xmlns:owner="clr-namespace:BookingApp.WPF.ViewModel.Owner"
+      d:DataContext="{d:DesignInstance Type=owner:SelectedForumPageViewModel}"
+      mc:Ignorable="d"
+      Title="SelectedForum" Height="450" Width="800">
+    <Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Forum" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 30 0"/>
+            <!--<Button Content="&#xE76B;" Command="{Binding BackCommand}" FontFamily="Segoe UI Symbol" FontSize="25" Width="30" VerticalAlignment="Center" Grid.Column="0"/>-->
+            <Button Command="{Binding BackCommand}" Background="White" BorderBrush="White">
+                <TextBlock Text="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="30" VerticalAlignment="Center" Grid.Column="0"/>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Forum for location:" Grid.Column="0" FontSize="20" Margin="3 0 0 0"/>
+            <TextBlock Grid.Column="1" FontSize="20" Margin="3 0 0 0">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0}, {1}">
+                        <Binding Path="City"/>
+                        <Binding Path="Country"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <Button Content="&#xE73A;" FontFamily="Segoe MDL2 Assets" FontSize="30" Grid.Column="2" IsEnabled="{Binding reallyUsefull}" Margin="0 0 3 0">
+                <Button.ToolTip>
+                    <ToolTip Content="Forum usefullness status"/>
+                </Button.ToolTip>
+            </Button>
+        </Grid>
+
+        <TextBlock Text="Guest comments:" Grid.Row="2" FontSize="20" Margin="3 0 0 0"/>
+
+        <Grid Grid.Row="3">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="5">
+                <ScrollViewer Margin="0 4 4 4">
+                    <ItemsControl Margin="5" ItemsSource="{Binding guestCommentsDictionary}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Guest name:" Grid.Column="0" Margin="3 0 0 0"/>
+                                                <TextBlock Text="{Binding Key}" Grid.Column="1" Margin="3 0 0 0"/>
+                                            </Grid>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Comment:" Grid.Column="0" Margin="3 0 0 0"/>
+                                                <TextBlock Text="{Binding Value}" Grid.Column="1" Margin="3 0 0 0"/>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Button Content="Report" Margin="20 5 20 5" Height="30" Width="40"/>
+                                        </Grid>
+                                        
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <TextBlock Text="Owner comments:" Grid.Row="4" FontSize="20" Margin="3 0 0 0"/>
+
+        <Grid Grid.Row="5">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="5">
+                <ScrollViewer Margin="0 4 4 4">
+                    <ItemsControl Margin="5" ItemsSource="{Binding OwnerCommentsDictionary}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Owner name:" Grid.Column="0" Margin="3 0 0 0"/>
+                                                <TextBlock Text="{Binding Item1}" Grid.Column="1" Margin="3 0 0 0"/>
+                                            </Grid>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Comment:" Grid.Column="0" Margin="3 0 0 0"/>
+                                                <TextBlock Text="{Binding Item2}" Grid.Column="1" Margin="3 0 0 0"/>
+                                            </Grid>
+                                        </Grid>
+
+                                        <!--<Grid Grid.Column="1">
+                                            <Button Content="Report" Margin="20 5 20 5" Height="30" Width="40"/>
+                                        </Grid>-->
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <TextBlock Text="Add your comment:" Grid.Row="6" Margin="3"/>
+
+        <TextBox Text="{Binding NewComment}" Width="400" Height="70" Grid.Row="7" Margin="5"/>
+
+
+        <Button Content="Add comment" FontSize="20" Grid.Row="8" Margin="270 5 5 5" Command="{Binding AddCommentCommand}"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,98 @@
+<Page x:Class="BookingApp.WPF.View.GuestPages.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:guest="clr-namespace:BookingApp.WPF.ViewModel.Guest"
+    xmlns:guestPages="clr-namespace:BookingApp.WPF.ViewModel.GuestPages"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=guestPages:DetailsViewModel}" 
+    Title="DetailsPage">
+      
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <!-- Detalji o smeštaju -->
+            <StackPanel Grid.Row="0" Margin="20">
+                <!-- Detalji o smeštaju -->
+                <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding SelectedAccommodation.Name}" Margin="0 0 0 5"/>
+                <TextBlock FontWeight="Bold" Text="Location:" Margin="0 0 0 2"/>
+                <TextBlock>
+                    <Run Text="City: " />
+                    <Run Text="{Binding SelectedAccommodation.Location.City}" />
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Country: " />
+                    <Run Text="{Binding SelectedAccommodation.Location.Country}" />
+                </TextBlock>
+                <!-- Ostali detalji -->
+                <!-- ... -->
+            </StackPanel>
+            
+            <!-- Unos parametara za rezervaciju -->
+            <StackPanel Grid.Row="1" Margin="20">
+                <TextBlock Text="Choose Start Date:" VerticalAlignment="Center"/>
+                <DatePicker x:Name="StartDatePicker" Margin="10 0" SelectedDate="{Binding StartDate, Mode=TwoWay, StringFormat='yyyy-MM-dd'}" Width="150"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="2" Margin="20">
+                <TextBlock Text="Choose End Date:" VerticalAlignment="Center"/>
+                <DatePicker x:Name="EndDatePicker" Margin="10 0" SelectedDate="{Binding EndDate, Mode=TwoWay, StringFormat='yyyy-MM-dd'}" Width="150"/>
+            </StackPanel>
+            
+            <!-- Unos broja gostiju i broja dana boravka -->
+            <StackPanel Grid.Row="3" Margin="20">
+                <TextBlock Text="Enter Guest Number:" VerticalAlignment="Center"/>
+                <TextBox x:Name="GuestNumberTextBox" Width="150"  Text="{Binding GuestNumber, Mode=TwoWay}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="4" Margin="20">
+                <TextBlock Text="Enter Number of Days:" VerticalAlignment="Center"/>
+                <TextBox x:Name="NumberOfDaysTextBox" Width="150"  Text="{Binding NumberOfDays, Mode=TwoWay}"/>
+            </StackPanel>
+            
+            <!-- Lista dostupnih rezervacija -->
+            <ListBox Grid.Row="5" x:Name="ReservationListBox" SelectionMode="Extended" SelectedItem="{Binding SelectedTermin}" ItemsSource="{Binding AvailableReservations}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20">
+                <ListBox.Template>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ScrollViewer CanContentScroll="True">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListBox.Template>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock>
+                                <Run Text="{Binding StartDate, StringFormat='{}{0:M/d/yyyy}'}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding EndDate, StringFormat='{}{0:M/d/yyyy}'}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <!-- Dugmad -->
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                <Button Content="Search" Command="{Binding SearchCommand}" Background="#AE82FF" Margin="5"/>
+                <Button Content="Reserve" Command="{Binding ReserveCommand}" Background="#AE82FF" Margin="5"/>
+                <Button Content="Back to All Accommodations" Command="{Binding BackCommand}" Background="#AE82FF" Margin="5"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

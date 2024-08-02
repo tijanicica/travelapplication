@@ -1,0 +1,210 @@
+﻿<Page x:Class="BookingApp.WPF.View.TourGuidePages.TourReviewsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:tourGuide="clr-namespace:BookingApp.WPF.ViewModel.TourGuide"
+      xmlns:converters="clr-namespace:BookingApp.WPF.View.TourGuidePages.Converters"
+      d:DataContext="{d:DesignInstance Type=tourGuide:TourReviewsPageViewModel}"
+      mc:Ignorable="d"
+      Title="TourReviewsPage" Height="580" Width="800">
+    <Page.Resources>
+        <converters:BoolToStringConverter x:Key="BoolToStringConverter" />
+        <Style x:Key="RemoveButton" TargetType="Button">
+            <Setter Property="Background" Value="LightCoral"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="LightCoral    " BorderThickness="2" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#f2d5d5"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#f2d5d5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="LogoutButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="LightCoral"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="LightCoral    " BorderThickness="2" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightPink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Border Margin="5" Background="#f2d5d5" CornerRadius="20 20 20 20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock FontFamily="Trebuchet MS" Foreground="#424040"  FontWeight="Bold"  FontStretch="Expanded" FontSize="22" Margin="27 20 0 0" Grid.Column="0" Grid.Row="0" Text="Reviews"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+         <DataGrid x:Name="TourSpots" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="2" Grid.Column="0"
+                  ItemsSource="{Binding TourReviews  }" Margin="27 20 10 30" HorizontalAlignment="Stretch"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  Background="White" BorderBrush="LightGray"
+                  GridLinesVisibility="None" Padding="5"  FontFamily="Trebuchet MS" >
+            <DataGrid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/> 
+                </Style>
+               
+                <Style TargetType="DataGridCell">
+                   
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+   
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#e0e0e0"/> 
+                    <Setter Property="Foreground" Value="#424040"/> 
+                    <Setter Property="BorderBrush" Value="LightGray"/> 
+                    <Setter Property="BorderThickness" Value="2 0 0 0"/> 
+                    <Setter Property="Padding" Value="5"/> 
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            
+               <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#f2f2f2"/>
+                    <Setter Property="Foreground" Value="#424040"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="10"> 
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                   
+            </DataGrid.CellStyle>
+            
+            
+            <DataGrid.RowStyle>
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="White"/> 
+        <Setter Property="Foreground" Value="#424040"/> 
+        <Setter Property="BorderBrush" Value="LightGray"/> 
+        <Setter Property="BorderThickness" Value="0 0 2 0"/> 
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridRow">
+                
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="10"> 
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </SelectiveScrollingGrid.RowDefinitions>
+                           
+                            <DataGridCellsPresenter Grid.Column="1"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            BorderBrush ="LightGray"
+                            BorderThickness = "0"/> 
+                            
+                        </SelectiveScrollingGrid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</DataGrid.RowStyle>
+             <DataGrid.Columns>
+                 <DataGridTextColumn Header="Tourist" Width="*" Binding="{Binding TouristName}"  />
+                 <DataGridTextColumn Header="Tour" Width="*" Binding="{Binding TourName}"   />
+                 <DataGridTextColumn Header="Joined At" Width="*" Binding="{Binding JoinedAt}" />
+                 <DataGridTextColumn Header="Valid" Width="*" Binding="{Binding Valid, Converter={StaticResource BoolToStringConverter}}" />
+                 <DataGridTemplateColumn Header="Report" Width="*">
+                     <DataGridTemplateColumn.CellTemplate>
+                         <DataTemplate>
+                             <!--<Button  Style="{StaticResource LogoutButtonStyle}" Width="100"  Content="Cancel"  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.CancelTourCommand}" CommandParameter="{Binding Id}"> </Button>
+ -->
+                             <Button Content="Report" Style="{StaticResource RemoveButton}"  FontSize="12" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.ReportReviewCommand}" CommandParameter="{Binding ReviewId}" IsEnabled="{Binding Valid}" />
+                         </DataTemplate>
+                     </DataGridTemplateColumn.CellTemplate>
+                 </DataGridTemplateColumn>
+                 <DataGridTemplateColumn Header="View More" Width="*">
+                     <DataGridTemplateColumn.CellTemplate>
+                         <DataTemplate>
+                             <Button Content="View More"  FontSize="12"  Style="{StaticResource RemoveButton}"  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.OpenOneReviewPageCommand}" CommandParameter="{Binding ReviewId}" />
+                            
+                         </DataTemplate>
+                     </DataGridTemplateColumn.CellTemplate>
+                 </DataGridTemplateColumn>
+             </DataGrid.Columns>
+         </DataGrid>
+       
+    </Grid>
+    </Border>
+</Page>

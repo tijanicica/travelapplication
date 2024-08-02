@@ -1,0 +1,125 @@
+<Page x:Class="BookingApp.WPF.View.OwnerPages.StatisticsMounthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:owner="clr-namespace:BookingApp.WPF.ViewModel.Owner"
+      d:DataContext="{d:DesignInstance Type=owner:StatisticsMounthPageViewModel}"
+      mc:Ignorable="d"
+      Title="StatisticsMounth" >
+    <Grid>
+        
+                <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Detailed stats" FontSize="25" HorizontalAlignment="Center" Grid.Row="0"/>
+        <TextBlock Text="{Binding year}" FontSize="22" HorizontalAlignment="Center" Grid.Row="1" Margin="0 10 0 10"/>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Accommodation name: " FontSize="20" Grid.Column="0" Margin="5 0 0 0"/>
+            <TextBlock Text="{Binding Name}" FontSize="20" Grid.Column="1" TextWrapping="Wrap"/>
+            
+            <TextBlock Text="Bussiest month:" FontSize="20" Grid.Column="2"/>
+            <TextBlock Text="{Binding bussiestMonth}" FontSize="20" Grid.Column="3"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="30 10 30 10"  CornerRadius="10">
+                <ScrollViewer Margin="0 5 3 5">
+                    <ItemsControl Margin="5" ItemsSource="{Binding statsForSelectedAccommodationByMonth}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="10" Margin="5" Background="#EBEBE9"  BorderBrush="LightBlue" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="{Binding Month}" Grid.Row="0" Margin="5 0 0 0"/>
+
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Number of reservations:" Grid.Column="0" Margin="5 0 0 0"/>
+                                            <TextBlock Text="{Binding ReservationsCount}" Grid.Column="1"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Number of canceled reservations:" Grid.Column="0" Margin="5 0 0 0"/>
+                                            <TextBlock Text="{Binding CancellationsCount}" Grid.Column="1"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Edited reservations:" Grid.Column="0" Margin="5 0 0 0"/>
+                                            <TextBlock Text="{Binding ReschedulingCount}" Grid.Column="1"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                          
+                                            <TextBlock Text="Renovation suggestions:" Grid.Column="0" Margin="5 0 0 0"/>
+                                            <TextBlock Text="{Binding RenovationSuggestionsCount}" Grid.Column="1"/>
+                                            
+                                            
+                                        </Grid>
+                                     
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                
+            </Border>
+            
+        </Grid>
+
+                <Border Grid.Row="4" HorizontalAlignment="Right" Background="White" BorderBrush="Black" BorderThickness="1" Padding="5" Height="50" Margin="30 70 30 10">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+                            <TextBox Text="Ctrl + Q -&gt; Log out" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Text="Ctrl + A -&gt; My account" IsReadOnly="True" Background="White" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                          
+                        </StackPanel>
+                    </DockPanel>
+                </Border> 
+         
+            
+        
+        
+    </Grid>
+</Page>

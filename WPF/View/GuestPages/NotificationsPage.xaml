@@ -1,0 +1,89 @@
+<Page x:Class="BookingApp.WPF.View.GuestPages.NotificationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BookingApp.WPF.View.GuestPages"
+      xmlns:converters="clr-namespace:BookingApp.WPF.View.GuestPages.Converters"
+      xmlns:guest="clr-namespace:BookingApp.WPF.ViewModel.Guest"
+      xmlns:fa="http://schemas.fontawesome.com/icons/"
+      mc:Ignorable="d"
+      Title="Notifications" 
+      d:DataContext="{d:DesignInstance Type=guest:NotificationsViewModel}">   
+    <Grid Background="#FFD7C4FB">
+        <ScrollViewer VerticalAlignment="Stretch" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch" MinWidth="300" MinHeight="300">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <fa:SvgAwesome Height="30" Width="30" Foreground="Black" Icon="Solid_Bell"/>
+                    <TextBlock Text=" New notifications" FontSize="24" VerticalAlignment="Center" Margin="10 0"/>
+                </StackPanel>
+                
+                <Separator Margin="0 10" /> 
+
+                <ItemsControl ItemsSource="{Binding NewNotifications}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0 0 0 1" BorderBrush="Gray" Margin="0 0 0 10" Padding="10" Width="Auto">
+                                <StackPanel>
+                                    <TextBlock FontSize="18" Margin="0 0 0 5">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Username: " />
+                                        </Underline>
+                                        <Run Text="{Binding Username}" />
+                                    </TextBlock>
+                                    <TextBlock FontSize="18">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Date: " />
+                                        </Underline>
+                                        <Run Text="{Binding NewDate}" />
+                                    </TextBlock>
+                                    <TextBlock FontSize="18" TextWrapping="Wrap">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Answer: " />
+                                        </Underline>
+                                        <Run Text="{Binding Answer}"  />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0 10">
+                        <fa:SvgAwesome Height="30" Width="30" Foreground="Black" Icon="Regular_Bell"/>
+                        <TextBlock Text="Old notifications" FontSize="24" VerticalAlignment="Center" Margin="10 0"/>
+                    </StackPanel>
+                </TextBlock>
+                <Separator Margin="0 10" BorderBrush="Gray" BorderThickness="0 0 0 3"  Padding="10" Width="Auto"/> <!-- Dodali smo Separator između New i Old notifikacija -->
+                <ItemsControl ItemsSource="{Binding OldNotifications}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0 0 0 1" BorderBrush="Gray" Margin="0 0 0 10" Padding="10" Width="Auto">
+                                <StackPanel>
+                                    <TextBlock FontSize="18" Margin="0 0 0 5">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Username: " />
+                                        </Underline>
+                                        <Run Text="{Binding Username}" />
+                                    </TextBlock>
+                                    <TextBlock FontSize="18">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Date: " />
+                                        </Underline>
+                                        <Run Text="{Binding NewDate}" />
+                                    </TextBlock>
+                                    <TextBlock FontSize="18" TextWrapping="Wrap">
+                                        <Underline>
+                                            <Run FontWeight="Bold" Text="Answer: " />
+                                        </Underline>
+                                        <Run Text="{Binding Answer}"  />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,92 @@
+﻿ <Page x:Class="BookingApp.WPF.View.TouristPages.ReservePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="ReservePage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Naslov i unos broja turista -->
+            <RowDefinition Height="*"/> <!-- Kontejner za dinamički generisane kontrole i poruku -->
+        </Grid.RowDefinitions>
+
+        <!-- Naslov i unos broja turista -->
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- Naslov -->
+                <RowDefinition Height="Auto"/> <!-- Red za unos broja turista -->
+                <RowDefinition Height="Auto" MinHeight="30"/> <!-- Red za prikaz greške sa minimalnom visinom -->
+            </Grid.RowDefinitions>
+            
+            <!-- Naslov forme -->
+            <TextBlock Grid.Row="0" Text="Tour reservation form" Margin="530,5,5,5" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left"/>
+
+            <Button Grid.Row="0" Content="Tutorial" Command="{Binding TutorialRateCommand}" Style="{StaticResource EnhancedButtonStyle}"  HorizontalAlignment="Right" Margin="5 5 10 5" >
+            </Button>
+            
+            <!-- Red za unos broja turista -->
+            <Grid Grid.Row="1" Margin="530,5,5,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/> <!-- Za tekst -->
+                    <ColumnDefinition Width="20"/> <!-- Razmak između tekst i TextBox-a -->
+                    <ColumnDefinition Width="*"/> <!-- Za TextBox -->
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Tourists number:" VerticalAlignment="Center" Grid.Column="0" FontSize="22" FontWeight="Bold" />
+    
+                <!-- Ovaj TextBox sada premeštamo u kolonu 2 -->
+                <TextBox x:Name="NumberOfPeopleTextBox" Width="150" Height="25" Grid.Column="2" KeyDown="NumberOfPeopleTextBox_KeyDown" FontSize="16" HorizontalAlignment="Left"/>
+            </Grid>
+
+
+            <!-- Red za prikaz greške -->
+            <TextBlock Grid.Row="2" x:Name="ErrorTextBlock" Text=" "  Margin="530,5,5,5"
+                       FontSize="20" FontWeight="Bold" Foreground="Red" 
+                       HorizontalAlignment="Left" Visibility="Visible"/>
+        </Grid>
+
+        <!-- Kontejner za dinamički generisane kontrole -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="DynamicContentStackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20">
+                <!-- Dinamički generisane kontrole će biti dodate ovde -->
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Overlay Gridovi -->
+        <!-- ... Vaš kod za OverlayGrid i OverlayGridSubmit ... -->
+        
+        
+        <Grid x:Name="OverlayGrid" Grid.RowSpan="2" Background="Gray" Opacity="0.9" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                  
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        
+        
+        <Grid Grid.Row="1" Grid.Column="1"  x:Name="OverlayGridSubmit" Background="White" Opacity="0.9" Visibility="Collapsed" 
+              HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+            <Border Background="Transparent" Padding="40" CornerRadius="10">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Background="White" Padding="20" CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+                        <StackPanel>
+                            <TextBlock Text="Successful reservation!" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,20" FontSize="20"/>
+                            <TextBlock x:Name="OverlayTextSubmit" Text="Available spots: " FontWeight="Bold" FontSize="20" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,84 @@
+﻿<Page x:Class="BookingApp.WPF.View.TouristPages.AlternativesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="AlternativesPage">
+    <Grid>
+        <!-- Use a StackPanel to vertically align header and DataGrid -->
+        <StackPanel Margin="30">
+            <TextBlock x:Name="AlternativesHeader" Text="Here are Alternatives:" HorizontalAlignment="Left" FontWeight="Bold" FontSize="26"/>
+            <TextBlock x:Name="NoAlternativesMessage" Text="Unfortunately there are no alternatives." HorizontalAlignment="Center" FontSize="24" Visibility="Collapsed" Margin="10" FontWeight="Bold"/>
+
+            <!-- DataGrid for displaying tour information -->
+              <DataGrid x:Name="ToursDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                  Grid.Row="1" ItemsSource="{Binding AllToursDto}" Margin="70"
+                  HorizontalAlignment="Stretch" HeadersVisibility="Row" RowHeaderWidth="0" 
+                  GridLinesVisibility="Horizontal" BorderThickness="0,1"><DataGrid.Columns>
+                <DataGridTemplateColumn Header="Photo" Width="220"> <!-- Prilagođena širina kolone za veću sliku -->
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding FirstPhoto}" Width="220" Height="220"/> <!-- Prilagođene veće dimenzije slika -->
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Kolona za ime ture -->
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Kolona sa dugmadima Details i Reserve -->
+                <DataGridTemplateColumn Header="Actions" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Korišćenje Grid-a umesto StackPanel-a za bolje poravnanje -->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/> <!-- Za gornji dugme -->
+                                    <RowDefinition Height="Auto"/> <!-- Za gornji dugme -->
+                                    <RowDefinition Height="*"/>   <!-- Za prazan prostor -->
+                                    <RowDefinition Height="Auto"/> <!-- Za donji dugme -->
+                                    <RowDefinition Height="20"/> <!-- Za gornji dugme -->
+                                </Grid.RowDefinitions>
+                                <Button Content="Details" Grid.Row="1" Margin="2" Click="DetailsButton_Click" 
+                                        Style="{StaticResource EnhancedButtonStyle}"/>
+                                <Button Content="Reserve" Grid.Row="3" Margin="2,10,2,2" Click="ReserveButton_Click" 
+                                        Style="{StaticResource EnhancedButtonStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" x:Name="MessagePanel" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed">
+            <TextBlock x:Name="MessageTextBlock" Foreground="Red" FontWeight="Bold" Text="Already reserved!"/>
+        </StackPanel>
+        
+        <Border x:Name="MessageBorder" Background="LightGray" CornerRadius="5" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Visibility="Collapsed">
+            <TextBlock Text="Selected tour is full."/>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,191 @@
+﻿<Page x:Class="BookingApp.WPF.View.TouristPages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:touristPages="clr-namespace:BookingApp.WPF.View.TouristPages"
+
+      d:DataContext="{d:DesignInstance Type=touristPages:HomePage}"
+      
+      mc:Ignorable="d"
+      Title="HomePage">
+    <Page.Resources>
+        <!-- Stil za DataGridCell koji sprečava promenu boje pozadine pri selekciji -->
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Stil za DataGridRow koji sprečava promenu boje pozadine pri selekciji -->
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FF000000"/> <!-- Crna pozadina -->
+            <Setter Property="Foreground" Value="#FFFFFFFF"/> 
+        </Style>
+        
+    </Page.Resources>
+    
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Row for filter controls -->
+            <RowDefinition Height="Auto"/> <!-- Row for the message panel -->
+            <RowDefinition Height="*"/>    <!-- Row for the DataGrid -->
+            <RowDefinition Height="Auto"/>    <!-- Row for the DataGrid -->
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,35,0,0" Width="Auto">
+            <!-- Grid for Country TextBox with icon -->
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="pack://application:,,,/Resources/Images/country_icon2.png" Width="40" Height="40" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <!-- Changed KeyDown to TextChanged -->
+                <TextBox Grid.Column="1" MinWidth="150" Height="40" FontSize="20" Name="CountryTextBox" TextChanged="TextBox_TextChanged" Margin="0,0,10,0" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            </Grid>
+            <!-- Grid for City TextBox with icon -->
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="1" Grid.Column="0" Source="pack://application:,,,/Resources/Images/city_icon.png" Width="40" Height="40" HorizontalAlignment="Left" Margin="5"/>
+                <!-- Changed KeyDown to TextChanged -->
+                <TextBox Grid.Column="1" MinWidth="150" Height="40" FontSize="20" Name="CityTextBox" TextChanged="TextBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            </Grid>
+            <!-- Grid for Duration TextBox with icon -->
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="pack://application:,,,/Resources/Images/duration_icon.png" Width="40" Height="40" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <!-- Changed KeyDown to TextChanged -->
+                <TextBox Grid.Column="1" Width="100" Height="40" FontSize="20" Name="DurationTextBox" TextChanged="TextBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            </Grid>
+            <!-- Numeric Stepper for Number of People with icon -->
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="pack://application:,,,/Resources/Images/people_icon.png" Width="40" Height="40" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBox Width="80" Height="40" Text="1" FontSize="20" Name="PeopleNumberTextBox" IsReadOnly="True" VerticalAlignment="Center"/>
+                    <Button Content="+" Width="20" Click="IncreasePeopleNumber_Click"/>
+                    <Button Content="-" Width="20" Click="DecreasePeopleNumber_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Language ComboBox with icon -->
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="pack://application:,,,/Resources/Images/language_icon.png" Width="40" Height="40" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <ComboBox Grid.Column="1" Width="150" Height="40" FontSize="20" Margin="0" Name="LanguageComboBox" SelectionChanged="LanguageComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Language" IsEnabled="False"/>
+                    <ComboBoxItem Content="Serbian"/>
+                    <ComboBoxItem Content="English"/>
+                    <ComboBoxItem Content="None"/>
+                </ComboBox>
+            </Grid>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" x:Name="MessagePanel" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed">
+            <TextBlock x:Name="MessageTextBlock" Foreground="Red" FontSize="20" FontWeight="Bold" Text="Already reserved!"/>
+        </StackPanel>
+
+        <!-- DataGrid za prikaz informacija o turama -->
+        <DataGrid x:Name="ToursDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                  Grid.Row="2" ItemsSource="{Binding AllToursDto}" Margin="70"
+                  HorizontalAlignment="Stretch" HeadersVisibility="Column"  IsReadOnly="True"  RowHeaderWidth="0" 
+                  GridLinesVisibility="Horizontal"  BorderThickness="0,1"><DataGrid.Columns>
+                
+                <DataGridTemplateColumn Header="Photo" Width="*"> <!-- Prilagođena širina kolone za veću sliku -->
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding FirstPhoto}" Width="Auto" Height="Auto" HorizontalAlignment="Left" Margin="0 5 20 5"/> <!-- Prilagođene veće dimenzije slika -->
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Kolona za ime ture -->
+                <DataGridTextColumn Header="Tour name" Binding="{Binding Name}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Start date" Binding="{Binding StartDate}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Kolona sa dugmadima Details i Reserve -->
+                <DataGridTemplateColumn Header="" Width="0.7*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Korišćenje Grid-a umesto StackPanel-a za bolje poravnanje -->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/> <!-- Za gornji dugme -->
+                                    <RowDefinition Height="Auto"/> <!-- Za gornji dugme -->
+                                    <RowDefinition Height="*"/>   <!-- Za prazan prostor -->
+                                    <RowDefinition Height="Auto"/> <!-- Za donji dugme -->
+                                    <RowDefinition Height="20"/> <!-- Za gornji dugme -->
+                                </Grid.RowDefinitions>
+                                <Button Content="Details" Grid.Row="1" Margin="2 2 15 2" Click="DetailsButton_Click" Width="100"
+                                        Style="{StaticResource EnhancedButtonStyle}"/>
+                                <Button Content="Reserve" Grid.Row="3" Margin="2,2,15,2" Click="ReserveButton_Click" Width="100"
+                                        Style="{StaticResource EnhancedButtonStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- row 3 za message u donjem desnom uglu grid  -->
+        <!-- Message Grid in the bottom right corner of the grid at row 3 -->
+        <Grid Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="350" Height="150"
+              Visibility="{Binding MessageVisibility}" Panel.ZIndex="100">
+            <Border Background="White" Padding="20" CornerRadius="10" BorderBrush="Black" BorderThickness="3">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding MessageText}" FontWeight="Bold" TextAlignment="Center" FontSize="20" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Page>

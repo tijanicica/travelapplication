@@ -1,0 +1,185 @@
+﻿<Page x:Class="BookingApp.WPF.View.TourGuidePages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="HomePage" Height="648" Width="800">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="White" BorderThickness="2" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+ 
+    <Grid > 
+       
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition> 
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row ="0" >
+            
+            <TextBlock Text="Create. Explore. Meet New People." TextAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="#363638" Margin="0 0 5 0" FontFamily="Georgia"></TextBlock>
+            <TextBlock Text="Wandery" TextAlignment="Right" VerticalAlignment="Bottom" Margin="5 5 200 5 "  FontSize="28" FontFamily="Georgia" Foreground="#363638"  FontWeight="Thin" ></TextBlock>
+        </Grid>   
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition> 
+            </Grid.RowDefinitions>
+            
+            <!--<Image Grid.Row = "0" Grid.Column="0" x:Name="SlideshowImage1" Stretch="UniformToFill" VerticalAlignment="Center"> </Image>
+            <Image Grid.Row = "0" Grid.Column="1" x:Name="SlideshowImage2" Stretch="UniformToFill" VerticalAlignment="Center"></Image>
+            <Image Grid.Row = "0" Grid.Column="2" x:Name="SlideshowImage3" Stretch="UniformToFill" VerticalAlignment="Center"></Image>
+            <Image Grid.Row = "1" Grid.Column="0" x:Name="SlideshowImage4" Stretch="UniformToFill" VerticalAlignment="Center"></Image>
+            <Image Grid.Row = "1" Grid.Column="1" x:Name="SlideshowImage5" Stretch="UniformToFill" VerticalAlignment="Center"></Image>
+            <Image Grid.Row = "1" Grid.Column="2" x:Name="SlideshowImage6" Stretch="UniformToFill" VerticalAlignment="Center"></Image>-->
+            
+            <Border Grid.Row="0" Grid.Column="0" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5" >
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/where-to-go-on-holiday.jpg"></ImageBrush>
+                </Border.Background>
+                <!--<Image x:Name="SlideshowImage1" Stretch="UniformToFill" VerticalAlignment="Center" ></Image>-->
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/polarlights.jpg"></ImageBrush>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/prettytravel.jpg"></ImageBrush>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="0" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/beach-near-hotel-min.jpg"></ImageBrush>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/how_to_take_great_travel_photos.jpg"></ImageBrush>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="2" Margin="5" CornerRadius="10" BorderBrush="White" BorderThickness="2" Padding="5">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/Sightseeing-in-Mauritius-02.jpg"></ImageBrush>
+                </Border.Background>
+            </Border>
+                
+            
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="Create" FontFamily="Trebuchet MS"  VerticalAlignment="Bottom" Foreground="#363638"  HorizontalAlignment="Center" Grid.Column="1" Margin="5 5 5 80" Click="OpenCreateTourPage"/>
+            <Button Content="Track" FontFamily="Trebuchet MS" VerticalAlignment="Bottom" Foreground="#363638" HorizontalAlignment="Center" Grid.Column="2" Margin="5 5 5 80"  Click="OpenTrackTourPage"/>
+            <Button Content="Schedule" FontFamily="Trebuchet MS"  VerticalAlignment="Bottom" Foreground="#363638" HorizontalAlignment="Center" Grid.Column="3" Margin="5 5 5 80" Click="ScheduleTourPage"/>
+            <Button Content="Reviews" FontFamily="Trebuchet MS" VerticalAlignment="Bottom" Foreground="#363638" HorizontalAlignment="Center" Grid.Column="4" Margin="5 5 5 80" Click="OpenTourReviewsPage"/>
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Margin="5 20 5 5" Click="OpenCreateTourPage">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Ellipse Stroke="White" StrokeThickness="2" Width="60" Height="60" x:Name="ellipse">
+                            <Ellipse.Fill>
+                                <ImageBrush  ImageSource="/Resources/Images/file.png" Stretch="UniformToFill" ></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ellipse" Property="Stroke" Value="#f2d5d5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+                
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Margin="5 20 5 5" Click="OpenTrackTourPage">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Ellipse Stroke="White" StrokeThickness="2" Width="60" Height="60"  x:Name="ellipse">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Resources/Images/route (3).png"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ellipse" Property="Stroke" Value="#f2d5d5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="3" Margin="5 20 5 5" Click="ScheduleTourPage">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Ellipse Stroke="White" StrokeThickness="2" Width="60" Height="60"  x:Name="ellipse">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Resources/Images/event.png" Stretch="UniformToFill"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ellipse" Property="Stroke" Value="#f2d5d5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="4" Margin="5 20 5 5" Click="OpenTourReviewsPage">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Ellipse Stroke="White" StrokeThickness="2" Width="60" Height="60"  x:Name="ellipse">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Resources/Images/rating-stars.png"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ellipse" Property="Stroke" Value="#f2d5d5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+    </Grid>
+</Page>
